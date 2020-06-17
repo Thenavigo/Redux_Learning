@@ -33,6 +33,14 @@
 ![Preview](https://github.com/patbi/Redux_Learning/blob/master/structure_of_redux.JPG)
 
 
+### 3. Three principes of Redux — `#`
+
+![Preview](https://github.com/patbi/Redux_Learning/blob/master/three_principles_redux.JPG)
+
+
+### 4. Implement simplest Redux — `#`
+
+
 
 
 
