@@ -30,7 +30,7 @@
 
 ### 2. What Redux include — `#`
 
-![Preview](https://github.com/patbi/jstransitions/blob/master/structure_of_redux.JPG)
+![Preview](https://github.com/patbi/Redux_Learning/blob/master/structure_of_redux.JPG)
 
 
 
