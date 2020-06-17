@@ -1,5 +1,6 @@
 # WE COVER
-*Full Redux Tutorial *
+
+*Full React Redux with testing Tutorial *
 
 # Table of Contents
 
@@ -14,6 +15,23 @@
 9. [Connects]()
 10. [Redux thunk]()
 11. [Testing]()
+
+
+
+
+
+### 1. What is Redux — `#`
+
+- Redux is a predictable state container for JavaScript apps.
+- Run in different environments(client, server and native)
+- It is tiny (2KB, including dependencies)
+
+
+
+### 2. What Redux include — `#`
+
+![Preview](https://github.com/patbi/jstransitions/blob/master/structure_of_redux.JPG)
+
 
 
 
