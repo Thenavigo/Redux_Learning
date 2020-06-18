@@ -132,6 +132,7 @@ store.dispatch({type:'UPDATE_NAME', payload:'Isaac'})
 
 ```bash
 console.log(store.getState());
+```
 
 Tomorrow we're going to follow up with "Combine Reducers"
 
