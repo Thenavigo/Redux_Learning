@@ -73,10 +73,78 @@ An error will be displayed due to the absence of the reducer function.
 to correct this error you just have to create the reducer function as follows, before create store.
 
 ```bash
-const reducer = (state, actions) => {}
+const reducer = () => {}
 ```
 
-I'll be back tomorrow with more details about what you see next! 
+```bash
+const store = createStore(reducer)
+```
+
+```bash
+console.log(store);
+```
+
+- can see 
+
+dispatch, subscribe, getState, replaceReducer...
+
+- We're going to look at the getState
+
+```bash
+console.log(store.getState());
+```
+
+- undefined message -> because our application does not yet have a state
+
+- So we create our state this way
+
+```bash
+const reducer = () => {
+	return {name:'Patrick'}
+}
+```
+
+- run 
+
+```bash
+console.log(store.getState());
+```
+
+- So we can see our state.
+
+- Then we move on to our state update.
+
+
+```bash
+const reducer = (state, actions) => {
+	 if(actions.type=== 'UPDATE_NAME'){
+		return {name:actions.payload}
+	 }
+	return {name:'Patrick'}
+}
+```
+
+- add the method dispatch() for update 
+
+```bash
+store.dispatch({type:'UPDATE_NAME', payload:'Isaac'})
+```
+
+```bash
+console.log(store.getState());
+
+Tomorrow we're going to follow up with "Combine Reducers"
+
+
+
+
+
+
+
+
+
+
+
 
 
 
