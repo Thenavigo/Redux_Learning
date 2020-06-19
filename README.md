@@ -145,7 +145,7 @@ So the three elements to remember are the following:
 
 
 
-- Next step Combine Reducers
+ Next step Combine Reducers
 
 
 So what does this step consist of? Just manipulating two reducers. And to do that we proceed as follows:
