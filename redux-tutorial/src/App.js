@@ -1,26 +1,38 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import store from './store/index';
+import update_person from './store/actions/personActions';
+import update_game from './store/actions/gameActions';
+import {connect} from 'react-redux';
+
+function updatePerson () {
+  store.dispatch(update_person);
+}
+
+function updateGame () {
+  store.dispatch(update_game);
+}
+
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <h1>Redux Tutorial </h1>
+
+        Person Name : {store.getState().person.name}
+        <button onClick={updatePerson}>update person </button>
+
+        <br/><br/>
+
+        Game Name : {store.getState().game.name}
+        <button onClick={updateGame}>update game </button>
     </div>
   );
 }
 
-export default App;
+const mapStateToProps = state => {
+  return state
+}
+
+export default connect(mapStateToProps)(App);

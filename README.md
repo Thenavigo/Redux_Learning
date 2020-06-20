@@ -221,15 +221,105 @@ Then we can observe the changes with a
 console.log(store.getState());
 ```
 
-Tomorrow we'll continue with the -> Providers 
+
+So what have we improved?
+
+- The architecture of the redux project
+
+![Preview](https://github.com/patbi/Redux_Learning/blob/master/new_structure.JPG)
+
+- We have installed react-redux to better handle the Provider & Connect
+
+ ```bash
+npm install react-redux --save;
+```
+
+Then, as previously announced, the following milestones have just been exported and imported.
+
+
+- Create reducer
+
+- Create store
+
+- Create actions
+
+But also to have our tool, we went on this page to get
+
+[redux-devtools-extension](https://github.com/zalmoxisus/redux-devtools-extension#usage)
+
+src -> store-> index.js
+
+ ```bash
+const store = createStore(
+	AllReducers, 
+	InitialStates, 
+	window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+```
+
+And to operate our store we just did this. 
+
+in src -> index.js
+
+```bash
+import store from './store/index.js';
+import {Provider} from 'react-redux'
+
+ReactDOM.render(
+	<Provider store={store}>
+	<App />
+	</Provider>
+
+, document.getElementById('root'));	
+```
+
+And to operate our state we just did this. 
+
+in src -> App.js
+
+```bash
+import React from 'react';
+import './App.css';
+import store from './store/index';
+import update_person from './store/actions/personActions';
+import update_game from './store/actions/gameActions';
+import {connect} from 'react-redux';
+
+function updatePerson () {
+  store.dispatch(update_person);
+}
+
+function updateGame () {
+  store.dispatch(update_game);
+}
 
 
 
+function App() {
+  return (
+    <div className="App">
+        <h1>Redux Tutorial </h1>
+
+        Person Name : {store.getState().person.name}
+        <button onClick={updatePerson}>update person </button>
+
+        <br/><br/>
+
+        Game Name : {store.getState().game.name}
+        <button onClick={updateGame}>update game </button>
+    </div>
+  );
+}
+
+const mapStateToProps = state => {
+  return state
+}
+
+export default connect(mapStateToProps)(App);
+```
 
 
 
-
-
+Tomorrow we'll continue with redux thunk
 
 
 
