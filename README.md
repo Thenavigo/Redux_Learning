@@ -57,6 +57,8 @@ npm start
 npm install redux
 ```
 
+### 5. Adding Actions and Reducers to store — `#`
+
 - In your src->index.js
 
 ```bash
@@ -95,6 +97,7 @@ console.log(store.getState());
 ```
 
 - undefined message -> because our application does not yet have a state
+
 
 - So we create our state this way
 
@@ -147,6 +150,7 @@ So the three elements to remember are the following:
 
  Next step Combine Reducers
 
+### 7. Combine Reducers — `#`
 
 So what does this step consist of? Just manipulating two reducers. And to do that we proceed as follows:
 
@@ -224,6 +228,8 @@ console.log(store.getState());
 
 So what have we improved?
 
+### 8 & 9. Providers - Connects  `#`
+
 - The architecture of the redux project
 
 ![Preview](https://github.com/patbi/Redux_Learning/blob/master/new_structure.JPG)
@@ -244,6 +250,8 @@ Then, as previously announced, the following milestones have just been exported 
 - Create actions
 
 But also to have our tool, we went on this page to get
+
+### 6. Redux Devtool — `#`
 
 [redux-devtools-extension](https://github.com/zalmoxisus/redux-devtools-extension#usage)
 
