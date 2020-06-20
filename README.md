@@ -146,6 +146,10 @@ So the three elements to remember are the following:
 - Create actions
 
 
+### 6. Redux Devtool — `#`
+
+[redux-devtools-extension](https://github.com/zalmoxisus/redux-devtools-extension#usage)
+
 
 
  Next step Combine Reducers
@@ -250,8 +254,6 @@ Then, as previously announced, the following milestones have just been exported 
 - Create actions
 
 But also to have our tool, we went on this page to get
-
-### 6. Redux Devtool — `#`
 
 [redux-devtools-extension](https://github.com/zalmoxisus/redux-devtools-extension#usage)
 
