@@ -231,7 +231,7 @@ So what have we improved?
 - We have installed react-redux to better handle the Provider & Connect
 
  ```bash
-npm install react-redux --save;
+npm install react-redux --save
 ```
 
 Then, as previously announced, the following milestones have just been exported and imported.
