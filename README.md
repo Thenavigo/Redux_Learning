@@ -329,7 +329,179 @@ export default connect(mapStateToProps)(App);
 
 
 
-Tomorrow we'll continue with redux thunk
+### 10. Redux Thunk — `#`
+
+In order to be able to execute asynchronous actions, like a request to an external API we need to use a middleware which is redux-thunk 
+
+Install redux-thunk
+
+```bash
+npm install redux-thunk --save	
+```
+
+After this installation we'll need to import 
+
+- applyMiddleware & compose from redux like this
+
+src -> store -> index.js
+
+```bash
+import {createStore, combineReducers, applyMiddleware, compose} from 'redux';
+```
+
+Next import thunk from 'redux-thunk' like this
+
+src -> store -> index.js
+
+```bash
+import thunk from 'redux-thunk';
+```
+
+Next create userReducer like this
+
+```bash
+import {UPDATE_USER} from '../actions/userActions'
+
+const userReducer = (state ={}, {type, payload}) => {
+	switch(type) {
+		case UPDATE_USER:
+			return payload
+		default:
+			return state
+	}
+}
+
+export default userReducer;
+```
+
+Next create userActions like this
+
+```bash
+export const UPDATE_USER = 'UPDATE_USER'
+
+const fetch_user = (dispatch) => {
+	fetch('https://reqres.in/api/users')
+		.then(res => res.json())
+		.then(res => dispatch({type:UPDATE_USER, payload:res.data}))
+}
+
+export default fetch_user;
+```
+
+
+Next update personReducer like this
+
+
+```bash
+import {UPDATE_PERSON} from '../actions/personActions'
+
+const personReducer = (state ={}, {type, payload}) => {
+	switch(type) {
+		case UPDATE_PERSON:
+			return Object.assign({},state,{name:payload})
+		default:
+			return state
+	}
+}
+
+export default personReducer;
+```
+
+Next update index.js like this
+
+src -> store > index.js
+
+```bash
+import {createStore, combineReducers, applyMiddleware, compose} from 'redux';
+import personReducer from './reducers/personReducer';
+import gameReducer from './reducers/gameReducer';
+import userReducer from './reducers/userReducer';
+import thunk from 'redux-thunk';
+
+
+const AllReducers = combineReducers({game:gameReducer, person:personReducer, users:userReducer})
+
+const InitialStates = {
+	game:{name:'Football'},
+	person:{name:'Patrick', email:'reactredux@tutorial.pat'},
+	users:[]
+}
+
+const middleware = [thunk]
+
+const store = createStore(AllReducers, InitialStates, compose(applyMiddleware
+	(...middleware), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()))
+
+export default store;
+```
+
+Next update App.js like this
+
+src -> App.js 
+
+```bash
+import React from 'react';
+import './App.css';
+import update_person from './store/actions/personActions';
+import update_game from './store/actions/gameActions';
+import fetch_user from './store/actions/userActions';
+import {connect} from 'react-redux';
+
+function App(props) {
+  return (
+    <div className="App">
+        <h1>Redux Tutorial </h1>
+
+        Person Name : {props.person.name}
+        <button onClick={props.updatePerson}>update person </button>
+
+        <br/><br/>
+
+        Game Name : {props.game.name}
+        <button onClick={props.updateGame}>update game </button>
+    
+        <br/><br/>
+
+        Users : <button onClick={props.fetchUsers}>Fetch Users </button>
+
+        {
+          props.users.length === 0 ? <p>No User found</p>:
+
+          props.users.map(user => <p key={user.id}>{user.id} - {user.first_name} - {user.email}</p>)
+        }
+
+    </div>
+  );
+}
+
+const mapStateToProps = state => {
+    return {
+      game:state.game,
+      
+      person:state.person,
+
+      users:state.users
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+      updateGame: () => {dispatch(update_game)},
+      updatePerson: () => {dispatch(update_person)},
+      fetchUsers: () => {dispatch(fetch_user)}
+  }
+}
+
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
+```
+
+Tomorrow we finish with the Testing
+
+
+
+
 
 
 
