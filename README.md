@@ -497,7 +497,7 @@ const mapDispatchToProps = dispatch => {
 export default connect(mapStateToProps, mapDispatchToProps)(App);
 ```
 
-Tomorrow we finish with the Testing
+Tomorrow we finish with the Testing and we continue with TypeScript
 
 
 
