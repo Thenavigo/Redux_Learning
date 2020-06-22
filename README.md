@@ -497,29 +497,114 @@ const mapDispatchToProps = dispatch => {
 export default connect(mapStateToProps, mapDispatchToProps)(App);
 ```
 
-Tomorrow we finish with the Testing and we continue with TypeScript
+### 11. Testing — `#`
+
+So it's great what we're doing here.
+
+- In order to do the testing we have to install jest like this:
+
+```bash
+npm install jest babel-jest --save-dev
+```
+
+Next step
+
+At the root of the project we create the file
+
+.babelrc and config
+
+```bash
+{
+	"presets":["@babel/preset-env"]
+}
+```
+
+Next step 
+
+In the package.json change the config of the "scripts": like this: 
+
+```bash
+ "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "jest",
+    "test:watch": "npm test -- --watch",
+    "eject": "react-scripts eject"
+  },
+```
+
+Now we can start with the first test "test actions" like this:
+
+- create src -> store -> actions -> person.test.js and add config like this :
+
+
+```bash
+import update_person, {UPDATE_PERSON} from './personActions'
+
+describe('actions',()=>{
+	it('should return the action for person',()=>{
+		const expectedAction = {
+			type: UPDATE_PERSON,
+			payload:'Isaac'
+		}
+		expect(update_person).toEqual(expectedAction)
+	})
+})
+```
+
+To run the test we're just doing
+
+ ```bash
+npm run test:watch
+```
+
+ - select all test 'option -> a'
+
+And we have this result
+
+![Preview](https://github.com/patbi/Redux_Learning/blob/master/test1.JPG)
+
+
+Next step Now we can start with the second test "test reducer" like this:
+
+- create src -> store -> reducers -> person-reducer.test.js and add config like this :
+
+ ```bash
+import personReducer from './personReducer'
+import {UPDATE_PERSON} from '../actions/personActions'
+
+describe('reducer',()=>{
+	it('should update person name only',()=>{
+		const initialState = {name:'Patrick', email:'reactredux@tutorial.pat'}
+		expect(
+			personReducer(initialState,{
+				type: UPDATE_PERSON,
+				payload:'Isaac'
+			})
+		)
+		.toEqual({name:'Isaac', email:'reactredux@tutorial.pat'})
+	})
+})
+```
+
+And we have this result
+
+![Preview](https://github.com/patbi/Redux_Learning/blob/master/test2.JPG)
 
 
 
+- Official Redux Website
+
+[Official Redux Website](https://redux.js.org/introduction/getting-started)
+
+- Next Course on TypeScript
+
+[Understand_TypeScript-](https://github.com/patbi/Understand_TypeScript-)
 
 
 
+We'll do a more in-depth tutorial on redux very soon but on our newsletter
 
+- subscribe massively and I'll see you tomorrow for the TypeScript series.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+[Thenavigo newsletter](https://thenavigo.substack.com/p/coming-soon)
